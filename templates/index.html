@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+      <!-- Hero Section -->
+      <div class="hero">
+          <!-- Text content -->
+          <div class="hero-text">
+              <div class="text-content">
+                  <div class="line">
+                      <p></p>
+                      <p>Best Sellers Spotlight</p>
+                  </div>
+                  <h1 class="heading">New & Noteworthy</h1>
+                  <div class="subheading">
+                      <p>Discover Your Next Favorite</p>
+                      <p></p>
+                  </div>
+              </div>
+          </div>
+      
+          <!-- Image -->
+          <img class="hero-image" src="../static/images/blog-2.png" alt="Latest Arrivals">
+      </div>
+      
+      
+      <div class="container">
+          <div class="header">
+              <div>Latest Collection</div>
+              <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo soluta iusto aut officia.
+              </p>
+          </div>
+      
+          <!-- Product Grid -->
+          <div class="product-grid">
+              {% for product in products %}
+              <a href="{{ url_for('product_detail', product_id=product.id) }}"  class="product-item">
+                  <div>
+                      <img src="{{ product.image }}" alt="{{ product.name }}">
+                  </div>
+                  <!-- <form class="form" action="{{ url_for('checkout', product_id=product.id) }}" method="GET">
+                    <button type="submit">Buy Now</button>
+                </form> -->
+                  <div class="product-info">
+                      <h3>{{ product.name }}</h3>
+                      <p>Price: ${{ product.price / 100 }}</p>
+                  </div>
+              </a>
+              {% endfor %}
+          </div>
+
+             <!--==shopping-banner===============-->
+    <section id="shopping-banner">
+        <div class="shopping-banner-container">
+            <div class="shopping-banner-text">
+                <strong>Collection</strong>
+                <h3>Stylish Bag and Shoes</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consequuntur, obcaecati hic sunt nisi,
+                </p>
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="shopping-banner-img">
+                <img alt="" src="../static/images/poster-3.png">
+            </div>
+        </div>
+    </section>
+
+      
+      <!-- Feature Section -->
+      <div class="feature-section">
+          <div>
+              <i class="fas fa-sync"></i>
+              <p class="title">Easy Exchange Policy</p>
+              <p class="description">We offer hassle-free exchange policy</p>
+          </div>
+          <div>
+              <i class="fas fa-ticket-alt"></i>
+              <p class="title">7 Days Return Policy</p>
+              <p class="description">We provide 7 Days free return policy</p>
+          </div>
+          <div>
+              <i class="fas fa-headset"></i>
+              <p class="title">Best Customer Support</p>
+              <p class="description">We provide 24/7 customer support</p>
+          </div>
+      </div>
+      
+<!-- Subscription Section -->
+<div class="subscription-section">
+    <p class="heading">Subscribe now & get 20% off</p>
+    <p class="subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, id.</p>
+
+    <form action="">
+        <input type="email" placeholder="Enter your Email">
+        <button type="submit">SUBSCRIBE</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

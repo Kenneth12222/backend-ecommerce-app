@@ -1,0 +1,131 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/collection.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar bg-gray-950">
+            <!-- Logo on the left -->
+            <a class="logo" href="{{ url_for('index') }}">Shoppify</a>
+    
+            <!-- Centered navigation links -->
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <hr>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('collection') }}">Collection</a>
+                    <hr>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about') }}">About</a>
+                    <hr>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('contact') }}">Contact</a>
+                    <hr>
+                </li>
+                <i class="bi bi-x-circle-fill" id="closeIcon">x</i>
+            </ul>
+    
+            <!-- Auth and cart links on the right -->
+            <div class=" auth-cart-links">
+                <i class="fas fa-search"></i>
+                <div class="dropdown-group">
+                    <i class="fas fa-user"></i>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-links">
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('profile') }}">Profile</a>
+                            <a href="{{ url_for('logout') }}">Logout</a>
+                            {% else %}
+                            <a href="{{ url_for('login') }}">Login</a>
+                            <a href="{{ url_for('register') }}">Register</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <a class="cart-link" href="{{ url_for('cart') }}">
+                    <i class="fab fa-opencart"></i>
+                    <span class="cart-count">{{ cart_items|length }}</span>
+                </a>
+                <i class="bi bi-list" id="fas-bars">+</i>
+
+            </div>
+
+        </nav>
+    </div>
+    
+    <div class="container mx-auto mt-10">
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+        
+
+  <!-- Footer Section -->
+<div class="footer-section">
+    <div>
+        <a class="logo" href="{{ url_for('index') }}">Shoppify</a>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur a quam, blanditiis dolorum ipsum voluptatem et amet quo architecto molestiae quos nihil, ratione ullam reprehenderit maxime in nobis itaque perferendis.
+        </p>
+    </div>
+
+    <div>
+        <p class="column-title">COMPANY</p>
+        <ul class="footer-column">
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Delivery</li>
+            <li>Privacy Policy</li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="column-title">GET IN TOUCH</p>
+        <ul class="footer-column">
+            <li>+254 742164615</li>
+            <li>contact@forever.com</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer-bottom">
+    &copy; 2024 Shoppify. All rights reserved.
+</div>
+
+
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>
+
+
