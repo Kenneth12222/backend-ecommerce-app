@@ -3,25 +3,36 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Login</h5>
-                <form method="POST" action="{{ url_for('login') }}">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        {{ form.username(class="form-control") }}
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        {{ form.password(class="form-control") }}
-                    </div>
-                    {{ form.submit(class="btn btn-primary") }}
-                </form>
-            </div>
-        </div>
+
+<form method="POST" action="{{ url_for('login') }}" class="login-form">
+    <!-- Hidden CSRF Token -->
+    {{ form.hidden_tag() }}
+    
+    <!-- Title and Horizontal Line -->
+    <div class="form-title">
+        <p>Login</p>
+        <hr>
     </div>
-</div>
+   
+    <!-- Username Field -->
+    {{ form.username(class="input-field") }}
+    
+    <!-- Password Field -->
+    {{ form.password(class="input-field") }}
+    
+    <!-- Forgot Password Link -->
+    <div class="forgot-password">
+        <p>Forgot your password?</p>
+    </div>
+   
+    <!-- Submit Button -->
+    {{ form.submit(class="submit-button") }}
+   
+    <!-- Register Link -->
+    <p class="register-link">
+        Don't have an account? 
+        <a href="/register">Register</a>
+    </p>
+</form>
+
 {% endblock %}

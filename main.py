@@ -29,8 +29,12 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
+
 # Stripe configuration
-stripe.api_key = 'your_stripe_secret_key'
+stripe_secret_key = 'sk_test_51P2AEeP3jLWWEkkLcx5sgF24BNmyNVFasBaOVsPL5dpEvRHIrBf7vS5ZHD5bymOd9gsKcfpJOHrp0UMB5zkOrtV4009hajkGNf'
+stripe_publish_key = 'pk_test_51P2AEeP3jLWWEkkLMDg24j89ONmq3R7jBmTqzDwHoZX6kWnTfIVVADnDvxQvkMrKrjFFdxiNvCtODjas9oD5JlY000JBa23LMi'
+stripe.api_key = stripe_secret_key
+
 
 # Import CLI commands after app initialization to avoid circular imports
 from cli_commands import create_admin
